@@ -1,5 +1,3 @@
-// src/utils/dungeonGenerator.js
-
 export const CELL_TYPES = {
     WALL: 'wall',
     PATH: 'path',
@@ -11,6 +9,7 @@ export const CELL_TYPES = {
 export const ITEM_TYPES = {
     COIN: 'coin',
     POTION: 'potion',
+    MANA_POTION: 'mana_potion',
     KEY: 'key',
 };
 
@@ -58,12 +57,10 @@ export const generateDungeon = ({ width, height }) => {
             )
         );
 
-        // Place the start block in the top-left corner
         startX = 0;
         startY = 0;
         dungeon[startY][startX] = CELL_TYPES.START;
 
-        // Place the portal
         do {
             portalX = Math.floor(Math.random() * width);
             portalY = Math.floor(Math.random() * height);
@@ -71,12 +68,10 @@ export const generateDungeon = ({ width, height }) => {
 
         dungeon[portalY][portalX] = CELL_TYPES.PORTAL;
 
-        // Check if there's a valid path from start to portal
         validDungeon = findPath(dungeon, startX, startY, portalX, portalY);
 
-        // Add items to the dungeon
         if (validDungeon) {
-            const itemCount = Math.floor((width * height) * 0.1); // 10% of cells will have items
+            const itemCount = Math.floor((width * height) * 0.1);
             for (let i = 0; i < itemCount; i++) {
                 let itemX, itemY;
                 do {

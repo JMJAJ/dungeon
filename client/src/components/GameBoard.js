@@ -1,4 +1,3 @@
-// src/components/GameBoard.js
 import React from 'react';
 import Cell from './Cell';
 import { CELL_TYPES } from '../utils/dungeonGenerator';
@@ -15,8 +14,9 @@ const GameBoard = ({ dungeon, playerPosition }) => {
         row.map((cell, x) => (
           <Cell
             key={`${x}-${y}`}
-            type={cell}
+            type={cell.type || cell}
             isPlayerHere={x === playerPosition.x && y === playerPosition.y}
+            item={cell.item}
           />
         ))
       )}

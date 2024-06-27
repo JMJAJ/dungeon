@@ -1,4 +1,3 @@
-// src/components/Cell.js
 import React from 'react';
 import { CELL_TYPES } from '../utils/dungeonGenerator';
 

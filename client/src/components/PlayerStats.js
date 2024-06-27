@@ -1,4 +1,3 @@
-// src/components/PlayerStats.js
 import React from 'react';
 
 const PlayerStats = ({ stats }) => (
